@@ -1,0 +1,81 @@
+.login-page {
+  flex: 1;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.login-card h1 {
+  font-size: 1.6rem;
+}
+
+.login-card label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.login-card input {
+  font-size: 1rem;
+  min-height: 44px;
+}
+
+.login-error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.login-message {
+  color: var(--success);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.login-toggle {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3xs);
+  flex-wrap: wrap;
+}
+
+.login-toggle button {
+  color: var(--cobalt-bright);
+  font-weight: 600;
+  min-height: 44px;
+  padding: 0 0.5rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.login-toggle button:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .login-page {
+    padding: var(--space-xs);
+  }
+  .login-card {
+    padding: var(--space-md);
+    gap: var(--space-sm);
+  }
+}

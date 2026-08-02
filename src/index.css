@@ -1,0 +1,307 @@
+/* ==========================================================================
+   The Stacks — design tokens & global foundation
+   ========================================================================== */
+
+:root {
+  /* Surfaces — flat charcoal-plum design */
+  --ink-950: #1c1b29;
+  --ink-900: #262536;
+  --ink-800: #302f44;
+  --ink-700: #3d3c56;
+  --line: rgba(240, 238, 230, 0.1);
+  --line-strong: rgba(240, 238, 230, 0.22);
+
+  /* Text */
+  --text: #c7c4d6;
+  --text-muted: #8b87a3;
+  --text-bright: #f3f1ea;
+
+  /* Accents — flat marquee accent colors, one per media type */
+  --paper: #f2efe6;
+  --cobalt: #4a6fe0;
+  --cobalt-bright: #6f8dec;
+  --marigold: #f2a93b;
+  --poppy: #e15a4b;
+  --orchid: #9b5de5;
+  --orchid-bright: #af73ec;
+  --burnt-orange: #cc5500;
+  --burnt-orange-bright: #d67733;
+
+  /* Semantic & interaction */
+  --success: #6fa97c;
+  --danger: #e15a4b;
+  --focus: #f2a93b;
+
+  /* Type */
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+
+  /* Spacing scale */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Radius / shadow */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lifted: 0 16px 40px rgba(0, 0, 0, 0.45);
+
+  --container-max: 1440px;
+
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--ink-950);
+  font: 16px/1.55 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Reset ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--ink-950);
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Focus states ------------------------------------------------------------ */
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Typography --------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 0;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 1.7rem + 2.2vw, 3.75rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2.25rem);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cobalt-bright);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Layout helpers ------------------------------------------------------------ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--space-sm);
+  }
+}
+
+.card {
+  background: var(--ink-900);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* Buttons -------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: 0.65em 1.3em;
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--cobalt);
+  color: var(--ink-950);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--cobalt-bright);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--cobalt);
+  color: var(--text-bright);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--danger);
+  color: var(--text-bright);
+}
+
+/* Inputs ----------------------------------------------------------------- */
+
+input,
+select,
+textarea {
+  background: var(--ink-800);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.65em 0.9em;
+  min-height: 44px;
+  color: var(--text-bright);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+  border-color: var(--cobalt);
+}
+
+/* Scrollbar ---------------------------------------------------------------- */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-700) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--ink-700);
+  border-radius: 8px;
+  border: 2px solid var(--ink-950);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--cobalt);
+}
+
+/* Motion --------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,85 @@
+.product-list-page {
+  padding-block: var(--space-sm) var(--space-2xl);
+}
+
+.admin-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.admin-page-header h1 {
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+  margin-top: var(--space-3xs);
+}
+
+.admin-empty-state {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: var(--space-sm);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+}
+
+.admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.product-list-title-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 500;
+  color: var(--text-bright);
+}
+
+.product-list-thumb {
+  width: 36px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--ink-800);
+}
+
+.product-list-thumb-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+}
+
+.admin-table-actions {
+  display: flex;
+  gap: var(--space-2xs);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .admin-page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+} 
+
+
+

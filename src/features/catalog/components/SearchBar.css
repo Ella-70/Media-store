@@ -1,0 +1,25 @@
+.search-bar {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+
+.search-bar-icon {
+  position: absolute;
+  left: 0.9em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.search-bar input {
+  width: 100%;
+  padding-left: 2.6em;
+  font-size: 1rem;
+}
+
+.search-bar input::-webkit-search-cancel-button {
+  filter: invert(0.6);
+}

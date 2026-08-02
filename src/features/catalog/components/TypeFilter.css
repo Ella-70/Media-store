@@ -1,0 +1,46 @@
+.type-filter {
+  display: flex;
+  gap: var(--space-2xs);
+  flex-wrap: wrap;
+}
+
+.type-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 1.1em;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.type-chip:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
+.type-chip.is-active {
+  background: var(--ink-800);
+  color: var(--text-bright);
+}
+
+.type-chip-movie.is-active { border-color: var(--cobalt); color: var(--cobalt-bright); }
+.type-chip-book.is-active { border-color: var(--marigold); color: var(--marigold); }
+.type-chip-manga.is-active { border-color: var(--poppy); color: var(--poppy); }
+.type-chip-comic.is-active { border-color: var(--burnt-orange); color: var(--burnt-orange); }
+
+@media (max-width: 480px) {
+  .type-filter {
+    gap: var(--space-3xs);
+  }
+  .type-chip {
+    padding: 0.4em 0.8em;
+    font-size: 0.8rem;
+  }
+}

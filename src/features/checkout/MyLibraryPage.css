@@ -1,0 +1,126 @@
+.library-page {
+  padding-block: var(--space-lg) var(--space-2xl);
+}
+
+.library-header {
+  margin-bottom: var(--space-lg);
+}
+
+.library-header h1 {
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+}
+
+.library-state {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  color: var(--text-muted);
+}
+
+.library-empty {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--text-muted);
+}
+
+.library-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.library-section-header h2 {
+  font-size: 1.35rem;
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--space-xs);
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+@media (max-width: 480px) {
+  .library-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-sm);
+  }
+}
+
+.library-card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--ink-900);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.library-card-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lifted);
+  border-color: var(--line-strong);
+}
+
+/* Expired rentals visually muted out */
+.library-card-wrapper.rental-expired {
+  opacity: 0.45;
+  filter: grayscale(0.5);
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.library-card-wrapper .product-card {
+  border: none;
+  border-radius: 0;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.rental-status-bar {
+  padding: var(--space-3xs) var(--space-xs);
+  background: var(--ink-950);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rental-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.rental-badge.active {
+  color: var(--marigold);
+}
+
+.rental-badge.expired {
+  color: var(--text-muted);
+}
+
+.library-card-actions {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--space-xs) var(--space-xs);
+  margin-top: var(--space-3xs);
+}
+
+.library-action-btn {
+  width: 100%;
+  font-size: 0.78rem;
+  padding: 0.4em 0.6em;
+  min-height: 44px;
+}
+
+.library-trailer-popover {
+  padding: 0 var(--space-xs) var(--space-xs);
+  animation: flash-in 0.25s ease;
+}

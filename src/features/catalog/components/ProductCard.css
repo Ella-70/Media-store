@@ -1,0 +1,130 @@
+.product-card {
+  position: relative;
+  display: block;
+  min-height: 44px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--ink-900);
+  border: 1px solid var(--line);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lifted);
+  border-color: var(--line-strong);
+}
+
+/* The spine tag — the one recurring signature element, one color per media type */
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 4px;
+  background: var(--type-color);
+  z-index: 2;
+}
+
+.product-card-movie { --type-color: var(--cobalt); }
+.product-card-book { --type-color: var(--marigold); }
+.product-card-manga { --type-color: var(--poppy); }
+.product-card-comic { --type-color: var(--burnt-orange); }
+
+.product-card-cover {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  background: var(--ink-800);
+  overflow: hidden;
+}
+
+.product-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-card-cover img {
+  transform: scale(1.06);
+}
+
+.product-card-cover-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2.75rem;
+  color: var(--text-muted);
+}
+
+.product-card-type {
+  position: absolute;
+  top: var(--space-2xs);
+  left: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25em 0.6em;
+  border-radius: 999px;
+  background: rgba(13, 15, 21, 0.72);
+  color: var(--type-color);
+  border: 1px solid var(--type-color);
+  backdrop-filter: blur(4px);
+}
+
+.product-card-rating {
+  position: absolute;
+  bottom: var(--space-2xs);
+  right: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.2em 0.55em;
+  border-radius: 999px;
+  background: rgba(13, 15, 21, 0.75);
+  color: var(--text-bright);
+}
+
+.product-card-body {
+  padding: var(--space-xs) var(--space-sm) var(--space-sm) calc(var(--space-sm) + 2px);
+}
+
+.product-card-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.35;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card-year {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: var(--space-3xs);
+}
+
+@media (max-width: 480px) {
+  .product-card-body {
+    padding: var(--space-2xs) var(--space-xs) var(--space-xs) calc(var(--space-xs) + 2px);
+  }
+  .product-card-title {
+    font-size: 0.88rem;
+  }
+  .product-card-type {
+    font-size: 0.6rem;
+    padding: 0.2em 0.45em;
+  }
+  .product-card-rating {
+    font-size: 0.7rem;
+    padding: 0.15em 0.45em;
+  }
+}

@@ -1,0 +1,23 @@
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-md);
+}
+
+@media (max-width: 480px) {
+  .catalog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: var(--space-xs);
+  }
+}
+
+.catalog-state {
+  padding: var(--space-2xl) var(--space-md);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.catalog-state-error {
+  color: var(--danger);
+}
