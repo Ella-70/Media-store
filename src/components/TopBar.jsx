@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../features/auth/useAuth'
 import { useCart } from '../features/cart/CartContext'
@@ -7,6 +8,11 @@ export function TopBar() {
   const { session, profile, signOut } = useAuth()
   const { cartCount, wishlistCount } = useCart()
   const canAccessAdmin = profile?.role === 'staff' || profile?.role === 'manager'
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  function closeMenu() {
+    setMenuOpen(false)
+  }
 
   return (
     <header className="top-bar">
@@ -19,6 +25,46 @@ export function TopBar() {
           </svg>
           The Stacks
         </Link>
+
+        <button
+          type="button"
+          className="top-bar-menu-btn"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        >
+          {menuOpen ? (
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+          )}
+        </button>
+
+        {menuOpen && (
+          <nav className="top-bar-mobile-menu">
+            <NavLink to="/" end onClick={closeMenu} className={({ isActive }) => `top-bar-mobile-link ${isActive ? 'is-active' : ''}`}>
+              Shelf
+            </NavLink>
+            {session && (
+              <NavLink to="/library" onClick={closeMenu} className={({ isActive }) => `top-bar-mobile-link ${isActive ? 'is-active' : ''}`}>
+                Library
+              </NavLink>
+            )}
+            {session && (
+              <button
+                type="button"
+                className="top-bar-mobile-link top-bar-mobile-signout"
+                onClick={() => { closeMenu(); signOut() }}
+              >
+                Sign out
+              </button>
+            )}
+          </nav>
+        )}
 
         {session ? (
           <div className="top-bar-account">
@@ -93,7 +139,7 @@ export function TopBar() {
             <Link to="/settings" className="text-muted top-bar-email" title="Profile settings">
               {profile?.username ? `@${profile.username}` : profile?.email}
             </Link>
-            <button className="btn btn-ghost" onClick={signOut}>Sign out</button>
+            <button className="btn btn-ghost top-bar-signout-desktop" onClick={signOut}>Sign out</button>
           </div>
         ) : (
           <div className="top-bar-account">
